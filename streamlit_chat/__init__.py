@@ -87,6 +87,6 @@ if not _RELEASE:
     """
 
     message("Hello, I am a Chatbot, how may I help you?")
-    message("Hey, what's a <span style='color: red'>chatbot</span>?", is_user=True)
+    message("## Hey, what's a <span style='color: red'>chatbot</span>?", is_user=True)
     message(long_message)
     st.text_input("Message:")

@@ -5,6 +5,7 @@ import {
   withStreamlitConnection,
 } from "streamlit-component-lib"
 import React, { ReactNode } from "react"
+import { marked } from 'marked'
 import styled from '@emotion/styled'
 import { css } from '@emotion/react'
 
@@ -71,7 +72,7 @@ class Chat extends StreamlitComponentBase {
         <Avatar src={avatarUrl} alt="profile" draggable="false"/>
         <Message
           dangerouslySetInnerHTML={{
-            __html: message || '',
+            __html: marked(message) || '',
           }}
         />
       </Chat>
