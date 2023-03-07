@@ -1,6 +1,4 @@
 import {
-  // eslint-disable-next-line 
-  Streamlit,
   StreamlitComponentBase,
   withStreamlitConnection,
 } from "streamlit-component-lib"
@@ -8,7 +6,8 @@ import React, { ReactNode } from "react"
 import { marked } from 'marked'
 import styled from '@emotion/styled'
 import { css } from '@emotion/react'
-
+import hljs from "highlight.js"
+import 'highlight.js/styles/atom-one-light.css'
 
 class Chat extends StreamlitComponentBase {
   public render = (): ReactNode => {
@@ -72,7 +71,9 @@ class Chat extends StreamlitComponentBase {
         <Avatar src={avatarUrl} alt="profile" draggable="false"/>
         <Message
           dangerouslySetInnerHTML={{
-            __html: marked(message) || '',
+            __html: marked(message, {
+              highlight: code => hljs.highlightAuto(code).value,
+            }) || '',
           }}
         />
       </Chat>

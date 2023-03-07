@@ -17,7 +17,7 @@ if _RELEASE:  # use the build instead of development if release is true
 else:
     _streamlit_chat = components.declare_component(
         COMPONENT_NAME,
-        url = "http://localhost:3001"
+        url = "http://localhost:3000"
     )
 
 # data type for avatar style
@@ -82,11 +82,10 @@ def message(message: str,
 if not _RELEASE:
     import streamlit as st  
     # testing
-    long_message = """
-    A chatbot or chatterbot is a software application used to conduct an on-line chat conversation via text or text-to-speech, in lieu of providing direct contact with a live human agent. Designed to convincingly simulate the way a human would behave as a conversational partner, chatbot systems typically require continuous tuning and testing, and many in production remain unable to adequately converse, while none of them can pass the standard Turing test. The term "ChatterBot" was originally coined by Michael Mauldin (creator of the first Verbot) in 1994 to describe these conversational programs.
-    """
+    long_message = "A chatbot or chatterbot is a software application used to conduct an on-line chat conversation via text or text-to-speech, in lieu of providing direct contact with a live human agent. Designed to convincingly simulate the way a human would behave as a conversational partner, chatbot systems typically require continuous tuning and testing, and many in production remain unable to adequately converse, while none of them can pass the standard Turing test. The term 'ChatterBot' was originally coined by Michael Mauldin (creator of the first Verbot) in 1994 to describe these conversational programs."
 
     message("Hello, I am a Chatbot, how may I help you?")
     message("## Hey, what's a <span style='color: red'>chatbot</span>?", is_user=True)
+    message("### Highlight\n``` js\nconsole.log('Hello')\n```")
     message(long_message)
     st.text_input("Message:")
