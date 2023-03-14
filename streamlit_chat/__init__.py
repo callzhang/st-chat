@@ -87,5 +87,6 @@ if not _RELEASE:
     message("Hello, I am a Chatbot, how may I help you?")
     message("## Hey, what's a <span style='color: red'>chatbot</span>?", is_user=True)
     message("### Highlight\n``` js\nconsole.log('Hello')\n```")
+    message("![rosetta](https://rosettalab.top/0613badf/images/pages/auth/background.png)")
     message(long_message)
     st.text_input("Message:")

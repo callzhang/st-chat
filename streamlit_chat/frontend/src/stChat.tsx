@@ -8,6 +8,22 @@ import styled from '@emotion/styled'
 import { css } from '@emotion/react'
 import hljs from "highlight.js"
 import 'highlight.js/styles/atom-one-light.css'
+import { imageFetcher } from "./utils"
+
+const node = document.body.getClientRects()[0]
+const base = node.width * 0.6
+
+marked.use({
+  renderer: {
+    image(href, title, text) {
+      if (!href) return ''
+      const { width, height } = imageFetcher.read(href)
+      const w = width > base ? base : width
+      const h = (w * height) / width
+      return `<img src="${href}" alt="${text}" style="width: ${w}px; height: ${h}px" />`
+    },
+  },
+})
 
 class Chat extends StreamlitComponentBase {
   public render = (): ReactNode => {
@@ -70,6 +86,7 @@ class Chat extends StreamlitComponentBase {
       <Chat isUser={isUser} className="chat">
         <Avatar src={avatarUrl} alt="profile" draggable="false"/>
         <Message
+          className="message"
           dangerouslySetInnerHTML={{
             __html: marked(message, {
               highlight: code => hljs.highlightAuto(code).value,
