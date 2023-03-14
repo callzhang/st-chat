@@ -67,7 +67,7 @@ class Chat extends StreamlitComponentBase {
     })
 
     return (
-      <Chat isUser={isUser}>
+      <Chat isUser={isUser} className="chat">
         <Avatar src={avatarUrl} alt="profile" draggable="false"/>
         <Message
           dangerouslySetInnerHTML={{
